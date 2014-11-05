@@ -220,6 +220,27 @@ function VariantOptions(params) {
         price.text(i18n.variant_options_select);
 
     }
+    toggle_extras(variants);
+  }
+
+  function toggle_extras(variants) {
+    $('.extra-variant-info')
+      .removeClass('variant-not-selected')
+      .removeClass('variant-selected')
+      .removeClass('no-variant-selected');
+
+    if (variant) {
+      $('.extra-variant-info').each(function() {
+        var el = $(this);
+        if (el.data('variant') == variant.id) {
+          el.addClass('variant-selected');
+        } else {
+          el.addClass('variant-not-selected');
+        }
+      });
+    } else {
+      $('.extra-variant-info').addClass('no-variant-selected');
+    }
   }
 
   function clear(i) {
