@@ -221,6 +221,9 @@ function VariantOptions(params) {
 
     }
     toggle_extras(variants);
+    if ($.kit != undefined && $('#base_price').size() != 0 ) {
+      $.kit.update_cart_total();
+    }
   }
 
   function toggle_extras(variants) {
