@@ -282,6 +282,12 @@ function VariantOptions(params) {
     handle_selected();
 
     variants = find_variant();
+    if ($('#base_price').size() != 0 && variants.price) {
+      $('#base_price').val(variants.price);
+      if ($.kit != undefined) {
+        $.kit.base_price = parseFloat(variants.price.replace("$",""));
+      }
+    }
     toggle(variants);
   }
 
