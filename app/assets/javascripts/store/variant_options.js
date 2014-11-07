@@ -42,7 +42,6 @@ function VariantOptions(params) {
   var selection = [];
   var buttons;
 
-
   function init() {
     divs = $('#product-variants .variant-options');
     disable(divs.find('a.option-value').addClass('locked'));
@@ -196,9 +195,6 @@ function VariantOptions(params) {
     if (variant) {
       $('#variant_id, form[data-form-type="variant"] input[name$="[variant_id]"]').val(variant.id);
       $('#product-price .price').removeClass('unselected').text(variant.price);
-      if (variant.in_stock)
-        $('#cart-form button[type=submit]').attr('disabled', false).fadeTo(100, 1);
-      $('form[data-form-type="variant"] button[type=submit]').attr('disabled', false).fadeTo(100, 1);
       try {
         show_variant_images(variant.id);
       } catch(error) {
@@ -212,7 +208,6 @@ function VariantOptions(params) {
       }
 
       $('#variant_id, form[data-form-type="variant"] input[name$="[variant_id]"]').val('');
-      $('#cart-form button[type=submit], form[data-form-type="variant"] button[type=submit]').attr('disabled', true).fadeTo(0, 0.5);
       price = $('#product-price .price').addClass('unselected')
       // Replace product price by "(select)" only when there are at least 1 variant not out-of-stock
       variants = $("div.variant-options.index-0")
@@ -287,6 +282,11 @@ function VariantOptions(params) {
       if ($.kit != undefined) {
         $.kit.base_price = parseFloat(variants.price.replace("$",""));
       }
+    }
+    if (variant != undefined) {
+      $('#add-to-cart-button').show(100)
+    } else {
+      $('#add-to-cart-button').hide(100)
     }
     toggle(variants);
   }
