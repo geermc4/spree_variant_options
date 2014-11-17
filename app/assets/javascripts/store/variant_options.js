@@ -280,7 +280,7 @@ function VariantOptions(params) {
     if ($('#base_price').size() != 0 && variants.price) {
       $('#base_price').val(variants.price);
       if ($.kit != undefined) {
-        $.kit.base_price = parseFloat(variants.price.replace("$",""));
+        $.kit.base_price = parseFloat(variants.price.replace(/[^0-9\.]+/g,""))
       }
     }
     if (variant != undefined) {
