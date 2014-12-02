@@ -253,7 +253,6 @@ function VariantOptions(params) {
     });
     parent.find('strong.selection').html('').removeClass('out-of-stock');
     $("#variant_quantity").html("");
-    show_all_variant_images();
   }
 
 
